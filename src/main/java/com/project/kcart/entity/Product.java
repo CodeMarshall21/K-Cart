@@ -35,7 +35,7 @@ public class Product {
     private Integer stock;
 
 
-    private Integer numOfReviews;
+    private Integer numOfReviews = 0;
 
     public Long getId() {
         return id;
