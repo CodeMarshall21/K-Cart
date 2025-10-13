@@ -120,4 +120,8 @@ public class Product {
         this.seller = seller;
         this.stock = stock;
     }
+
+    public Product() {
+        super();
+    }
 }
