@@ -111,7 +111,7 @@ public class Product {
         this.numOfReviews = numOfReviews;
     }
 
-    public Product(Long id, String name, Double price, String description, Double rating, String seller, Integer stock, Integer numOfReviews) {
+    public Product(Long id, String name, Double price, String description, Double rating, String seller, Integer stock) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -119,6 +119,5 @@ public class Product {
         this.rating = rating;
         this.seller = seller;
         this.stock = stock;
-        this.numOfReviews = numOfReviews;
     }
 }
