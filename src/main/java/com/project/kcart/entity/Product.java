@@ -36,6 +36,8 @@ public class Product {
     @NotNull(message = "Stock field is required")
     private Integer stock;
 
+    private String category;
+
 
     private Integer numOfReviews = 0;
 
@@ -111,11 +113,20 @@ public class Product {
         this.numOfReviews = numOfReviews;
     }
 
-    public Product(Long id, String name, Double price, String description, Double rating, String seller, Integer stock) {
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Product(Long id, String name, Double price, String description, String category,  Double rating, String seller, Integer stock) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
+        this.category = category;
         this.rating = rating;
         this.seller = seller;
         this.stock = stock;
