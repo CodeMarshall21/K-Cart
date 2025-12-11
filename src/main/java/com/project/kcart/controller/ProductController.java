@@ -18,13 +18,20 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping
-    public Map<String, Object> getAllProducts(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size){
+    public Map<String, Object> getAllProducts(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "15") int size){
         return productService.getAllProducts(page, size);
     }
 
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable Long id){
         return productService.getProductById(id);
+    }
+
+    @GetMapping("/search")
+    public List<Product> searchProduct(@RequestParam(required = false) String category, @RequestParam(required = false) Double minPrice,
+                                       @RequestParam(required = false) Double maxPrice, @RequestParam(required = false) String keyword,
+                                       @RequestParam(required = false) Double rating){
+        return productService.searchProduct(category, minPrice, maxPrice, keyword, rating);
     }
 
 }

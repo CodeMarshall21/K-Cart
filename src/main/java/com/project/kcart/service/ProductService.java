@@ -36,7 +36,7 @@ public class ProductService {
         return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
-    public List<Product> searchProduct(String category, double minPrice, double maxPrice, String keyword, Double rating){
+    public List<Product> searchProduct(String category, Double minPrice, Double maxPrice, String keyword, Double rating){
         Specification<Product> spec = Specification.where(ProductSpecification.hasCategory(category));
 
         return productRepository.findAll(spec);
