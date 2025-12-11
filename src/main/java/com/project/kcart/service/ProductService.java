@@ -40,6 +40,7 @@ public class ProductService {
         Specification<Product> spec = Specification.where(ProductSpecification.hasCategory(category))
                                                     .and(ProductSpecification.priceBetween(minPrice, maxPrice))
                                                     .and(ProductSpecification.hasNameOrDescriptionLike(keyword))
+                                                    .and(ProductSpecification.ratingsGreaterThan(rating))
                 ;
 
         return productRepository.findAll(spec);
