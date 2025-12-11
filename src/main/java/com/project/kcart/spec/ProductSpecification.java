@@ -16,4 +16,15 @@ public class ProductSpecification {
             return criteriaBuilder.between(root.get("price"), minPrice, maxPrice);
         };
     }
+
+    public static Specification<Product> hasNameOrDescriptionLike(String keyword){
+        return (root, query, cb) -> {
+            if(keyword == null || keyword.isEmpty()) return null;
+
+            return cb.or(
+                    cb.like(root.get("name"), "%"+keyword.toLowerCase()+"%"),
+                    cb.like(root.get("description"), "%"+keyword.toLowerCase()+"%")
+            );
+        };
+    }
 }
