@@ -3,6 +3,7 @@ package com.project.kcart.service;
 import com.project.kcart.entity.Product;
 import com.project.kcart.entity.ProductReview;
 import com.project.kcart.repository.ProductRepository;
+import com.project.kcart.repository.ProductReviewRepository;
 import com.project.kcart.spec.ProductSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +21,7 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+    private ProductReviewRepository productReviewRepository;
 
     public Map<String, Object> getAllProducts(int page, int size){
         Pageable pageable = PageRequest.of(page, size);
@@ -56,6 +58,6 @@ public class ProductService {
         productReview.setRating(reviewDto.getRating());
         productReview.setProduct(product);
 
-        ProductReviewRepository.save(productReview);
+        productReviewRepository.save(productReview);
     }
 }
