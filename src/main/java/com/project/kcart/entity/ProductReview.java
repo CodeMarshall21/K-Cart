@@ -48,4 +48,8 @@ public class ProductReview {
         this.rating = rating;
         this.comment = comment;
     }
+
+    public ProductReview(){
+        super();
+    }
 }

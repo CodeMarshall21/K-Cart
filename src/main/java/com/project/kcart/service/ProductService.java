@@ -1,6 +1,7 @@
 package com.project.kcart.service;
 
 import com.project.kcart.entity.Product;
+import com.project.kcart.entity.ProductReview;
 import com.project.kcart.repository.ProductRepository;
 import com.project.kcart.spec.ProductSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,17 @@ public class ProductService {
                 ;
 
         return productRepository.findAll(spec);
+    }
+
+    public void addReview(ProductReviewDto reviewDto){
+        Product product = productRepository.findById(reviewDto.getProductID()).orElseThrow(() -> new RuntimeException("PRODUCT NOT FOUND !"));
+
+        ProductReview productReview = new ProductReview();
+
+        productReview.setComment(reviewDto.getComment());
+        productReview.setRating(reviewDto.getRating());
+        productReview.setProduct(product);
+
+        ProductReviewRepository.save(productReview);
     }
 }
