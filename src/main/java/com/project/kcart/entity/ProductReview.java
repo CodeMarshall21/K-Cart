@@ -1,5 +1,6 @@
 package com.project.kcart.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -52,6 +53,7 @@ public class ProductReview {
 
     @ManyToOne()
     @JoinColumn(name = "product_id")
+    @JsonIgnore
     private Product product;
 
     public Product getProduct() {
@@ -62,3 +64,9 @@ public class ProductReview {
         this.product = product;
     }
 }
+
+
+
+
+
+
