@@ -34,7 +34,7 @@ public class ProductController {
         return productService.searchProduct(category, minPrice, maxPrice, keyword, rating);
     }
 
-    
+
 
 }
 
