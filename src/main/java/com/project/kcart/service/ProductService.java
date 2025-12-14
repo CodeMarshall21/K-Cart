@@ -1,5 +1,6 @@
 package com.project.kcart.service;
 
+import com.project.kcart.dto.ProductReviewDto;
 import com.project.kcart.entity.Product;
 import com.project.kcart.entity.ProductReview;
 import com.project.kcart.repository.ProductRepository;
@@ -21,6 +22,8 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
     private ProductReviewRepository productReviewRepository;
 
     public Map<String, Object> getAllProducts(int page, int size){
