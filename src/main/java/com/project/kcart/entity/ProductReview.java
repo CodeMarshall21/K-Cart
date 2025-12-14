@@ -40,7 +40,7 @@ public class ProductReview {
         this.comment = comment;
     }
 
-    public ProductReview(Long id, Integer rating, String comment) {
+    public ProductReview(Long id, Double rating, String comment) {
         this.id = id;
         this.rating = rating;
         this.comment = comment;

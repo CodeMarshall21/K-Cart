@@ -53,7 +53,7 @@ public class ProductService {
     }
 
     public void addReview(ProductReviewDto reviewDto){
-        Product product = productRepository.findById(reviewDto.getProductID()).orElseThrow(() -> new RuntimeException("PRODUCT NOT FOUND !"));
+        Product product = productRepository.findById(reviewDto.getProductId()).orElseThrow(() -> new RuntimeException("PRODUCT NOT FOUND !"));
 
         ProductReview productReview = new ProductReview();
 
