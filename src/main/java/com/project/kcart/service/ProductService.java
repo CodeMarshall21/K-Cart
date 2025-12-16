@@ -31,7 +31,7 @@ public class ProductService {
     public Map<String, Object> getAllProducts(int page, int size){
         Pageable pageable = PageRequest.of(page, size);
         Page<Product> products = productRepository.findAll(pageable);
-        List<ProductDto> productDtos = products.stream().map(this::convertToDto).collect(Collectors.toList());
+        List<ProductDto> productDtos = products.stream().map(this::convertToDto).toList();
         Map<String, Object> response = new HashMap<>();
 
         response.put("products", productDtos);
@@ -59,7 +59,7 @@ public class ProductService {
             reviewDto.setComment(review.getComment());
             reviewDto.setRating(review.getRating());
             return reviewDto;
-        }).collect(Collectors.toList());
+        }).toList();
 
         productDto.setReviews(reviewDtos);
 
