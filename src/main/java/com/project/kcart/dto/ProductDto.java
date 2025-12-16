@@ -20,13 +20,13 @@ public class ProductDto {
     private List<ProductImage> images;
 
 
-    private List<ProductReview> reviews;
+    private List<ProductReviewDto> reviews;
 
-    public List<ProductReview> getReviews() {
+    public List<ProductReviewDto> getReviews() {
         return reviews;
     }
 
-    public void setReviews(List<ProductReview> reviews) {
+    public void setReviews(List<ProductReviewDto> reviews) {
         this.reviews = reviews;
     }
 
