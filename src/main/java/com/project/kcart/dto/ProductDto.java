@@ -1,8 +1,6 @@
 package com.project.kcart.dto;
 
 import com.project.kcart.entity.ProductImage;
-import com.project.kcart.entity.ProductReview;
-
 
 import java.util.List;
 
