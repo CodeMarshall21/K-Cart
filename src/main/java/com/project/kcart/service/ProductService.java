@@ -1,5 +1,6 @@
 package com.project.kcart.service;
 
+import com.project.kcart.dto.ProductDto;
 import com.project.kcart.dto.ProductReviewDto;
 import com.project.kcart.entity.Product;
 import com.project.kcart.entity.ProductReview;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -29,13 +31,39 @@ public class ProductService {
     public Map<String, Object> getAllProducts(int page, int size){
         Pageable pageable = PageRequest.of(page, size);
         Page<Product> products = productRepository.findAll(pageable);
-
+        List<ProductDto> productDtos = products.stream().map(this::convertToDto).collect(Collectors.toList());
         Map<String, Object> response = new HashMap<>();
 
-        response.put("products", products.getContent());
+        response.put("products", productDtos);
         response.put("totalProducts", products.getTotalElements());
 
         return response;
+    }
+
+    public ProductDto convertToDto(Product product){
+        ProductDto productDto = new ProductDto();
+
+        productDto.setId(product.getId());
+        productDto.setName(product.getName());
+        productDto.setPrice(product.getPrice());
+        productDto.setCategory(product.getCategory());
+        productDto.setDescription(product.getDescription());
+        productDto.setRating(product.getRating());
+        productDto.setSeller(product.getSeller());
+        productDto.setStock(product.getStock());
+        productDto.setNumOfReviews(product.getNumOfReviews());
+
+        List<ProductReviewDto> reviewDtos = product.getReviews().stream().map( review -> {
+            ProductReviewDto reviewDto = new ProductReviewDto();
+            reviewDto.setProductId(review.getId());
+            reviewDto.setComment(review.getComment());
+            reviewDto.setRating(review.getRating());
+            return reviewDto;
+        }).collect(Collectors.toList());
+
+        productDto.setReviews(reviewDtos);
+
+        return productDto;
     }
 
     public Product getProductById(Long id){
