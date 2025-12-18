@@ -2,6 +2,7 @@ package com.project.kcart.controller;
 
 import com.project.kcart.dto.ProductReviewDto;
 import com.project.kcart.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -19,7 +20,7 @@ public class ProductReviewController {
     private ProductService productService;
 
     @PostMapping
-    public ResponseEntity<?> addReview(@RequestBody ProductReviewDto productReviewDto){
+    public ResponseEntity<?> addReview(@RequestBody @Valid ProductReviewDto productReviewDto){
         productService.addReview(productReviewDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Product Review Added");
