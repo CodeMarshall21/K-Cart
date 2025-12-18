@@ -15,8 +15,15 @@ public class ProductDto {
     private String category;
     private Integer numOfReviews = 0;
 
-    private List<ProductImage> images;
+    private List<ProductImageDto> images;
 
+    public List<ProductImageDto> getImages() {
+        return images;
+    }
+
+    public void setImages(List<ProductImageDto> images) {
+        this.images = images;
+    }
 
     private List<ProductReviewDto> reviews;
 

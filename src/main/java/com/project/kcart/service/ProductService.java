@@ -1,6 +1,7 @@
 package com.project.kcart.service;
 
 import com.project.kcart.dto.ProductDto;
+import com.project.kcart.dto.ProductImageDto;
 import com.project.kcart.dto.ProductReviewDto;
 import com.project.kcart.entity.Product;
 import com.project.kcart.entity.ProductReview;
@@ -63,6 +64,14 @@ public class ProductService {
         }).toList();
 
         productDto.setReviews(reviewDtos);
+
+        List<ProductImageDto> imageDtos = product.getImages().stream().map( image -> {
+            ProductImageDto imageDto = new ProductImageDto();
+            imageDto.setPublicId(image.getPublicId());
+            return imageDto;
+        }).toList();
+
+        productDto.setImages(imageDtos);
 
         return productDto;
     }

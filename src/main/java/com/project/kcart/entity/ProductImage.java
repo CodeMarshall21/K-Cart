@@ -49,4 +49,8 @@ public class ProductImage {
         this.publicId = url;
         this.product = product;
     }
+
+    public ProductImage() {
+        super();
+    }
 }
