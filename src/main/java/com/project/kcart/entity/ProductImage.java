@@ -1,6 +1,7 @@
 package com.project.kcart.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -38,9 +39,14 @@ public class ProductImage {
         this.url = url;
     }
 
-    public ProductImage(Long id, String publicId, String url) {
-        this.id = id;
-        this.publicId = publicId;
-        this.url = url;
+    @ManyToOne()
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+
+    public ProductImage(String url, Product product) {
+        this.url = "/uploads" + url;
+        this.publicId = url;
+        this.product = product;
     }
 }
