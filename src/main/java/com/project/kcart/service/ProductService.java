@@ -55,7 +55,8 @@ public class ProductService {
 
         List<ProductReviewDto> reviewDtos = product.getReviews().stream().map( review -> {
             ProductReviewDto reviewDto = new ProductReviewDto();
-            reviewDto.setProductId(review.getId());
+            reviewDto.setId(review.getId());
+            reviewDto.setProductId(review.getProduct().getId());
             reviewDto.setComment(review.getComment());
             reviewDto.setRating(review.getRating());
             return reviewDto;

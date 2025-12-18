@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 
 public class ProductReviewDto {
 
+    private Long id;
+
     @NotNull(message = "ProductID is required")
     private Long productId;
 
@@ -13,6 +15,14 @@ public class ProductReviewDto {
 
     @NotNull(message = "Rating is required.")
     private Double rating;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getProductId() {
         return productId;
