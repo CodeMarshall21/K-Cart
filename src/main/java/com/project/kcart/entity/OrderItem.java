@@ -27,6 +27,10 @@ public class OrderItem {
         this.product = product;
     }
 
+    public OrderItem() {
+        super();
+    }
+
     public Long getId() {
         return id;
     }
