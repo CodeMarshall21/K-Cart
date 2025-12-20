@@ -59,4 +59,9 @@ public class OrderService {
 
         return new OrderCreated(orderNo);
     }
+
+
+    public Orders getOrder(String orderNo){
+        return orderRepo.findByOrderNo(orderNo).orElseThrow(() -> new RuntimeException("No order found"));
+    }
 }

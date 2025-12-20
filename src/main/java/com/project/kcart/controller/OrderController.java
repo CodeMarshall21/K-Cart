@@ -20,4 +20,11 @@ public class OrderController {
         OrderCreated orderCreated = orderService.createOrder(orderRequest);
         return ResponseEntity.ok().body(orderCreated);
     }
+
+    @GetMapping("/{orderNo}")
+    public ResponseEntity<?> getOrder(@PathVariable String orderNo){
+        Orders orders = orderService.getOrder(orderNo);
+
+        return ResponseEntity.ok().body(orders);
+    }
 }
