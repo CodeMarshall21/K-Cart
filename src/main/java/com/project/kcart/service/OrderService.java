@@ -1,6 +1,7 @@
 package com.project.kcart.service;
 
 import com.project.kcart.dto.CreateOrderRequest;
+import com.project.kcart.dto.OrderCreated;
 import com.project.kcart.dto.OrderItemDto;
 import com.project.kcart.entity.OrderItem;
 import com.project.kcart.entity.Orders;
@@ -21,7 +22,7 @@ public class OrderService {
     @Autowired
     OrderRepository orderRepo;
 
-    public Orders createOrder(CreateOrderRequest orderRequest){
+    public OrderCreated createOrder(CreateOrderRequest orderRequest){
 
         Orders orders = new Orders();
         orders.setStatus("PENDING");
@@ -51,8 +52,11 @@ public class OrderService {
         orders.setTotalAmount(totalAmount);
         taxAmount = (double) Math.round(taxAmount * 100) / 100;
         orders.setTaxAmount(taxAmount);
-        orders.setOrderNo(UUID.randomUUID().toString());
+        String orderNo = UUID.randomUUID().toString();
+        orders.setOrderNo(orderNo);
 
-        return orderRepo.save(orders);
+        orderRepo.save(orders);
+
+        return new OrderCreated(orderNo);
     }
 }

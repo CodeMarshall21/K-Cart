@@ -1,14 +1,12 @@
 package com.project.kcart.controller;
 
 import com.project.kcart.dto.CreateOrderRequest;
+import com.project.kcart.dto.OrderCreated;
 import com.project.kcart.entity.Orders;
 import com.project.kcart.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -19,7 +17,7 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<?> createOrder(@RequestBody CreateOrderRequest orderRequest){
-        Orders orders = orderService.createOrder(orderRequest);
-        return ResponseEntity.ok().body(orders);
+        OrderCreated orderCreated = orderService.createOrder(orderRequest);
+        return ResponseEntity.ok().body(orderCreated);
     }
 }
