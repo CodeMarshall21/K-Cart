@@ -47,8 +47,9 @@ public class OrderService {
 
         orders.setTotalItemsAmount(totalItemsAmount);
 
-        double totalAmount = totalItemsAmount + taxAmount;
+        double totalAmount = (double) Math.round((totalItemsAmount + taxAmount) * 100) / 100;
         orders.setTotalAmount(totalAmount);
+        taxAmount = (double) Math.round(taxAmount * 100) / 100;
         orders.setTaxAmount(taxAmount);
         orders.setOrderNo(UUID.randomUUID().toString());
 
