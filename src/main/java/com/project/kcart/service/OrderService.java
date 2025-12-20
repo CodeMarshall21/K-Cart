@@ -28,7 +28,7 @@ public class OrderService {
         double totalItemsAmount = 0;
         double taxAmount = 0;
 
-        for(OrderItemDto item: orderRequest.getOrderItemDto()){
+        for(OrderItemDto item: orderRequest.getOrderItems()){
             OrderItem orderItem = new OrderItem();
 
             orderItem.setName(item.getName());

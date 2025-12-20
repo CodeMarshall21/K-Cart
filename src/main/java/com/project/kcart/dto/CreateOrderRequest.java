@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateOrderRequest {
-    private List<OrderItemDto> orderItemDto = new ArrayList<>();
 
-    public List<OrderItemDto> getOrderItemDto() {
-        return orderItemDto;
+    private List<OrderItemDto> orderItems;
+
+    public List<OrderItemDto> getOrderItems() {
+        return orderItems;
     }
 
-    public void setOrderItemDto(List<OrderItemDto> orderItemDto) {
-        this.orderItemDto = orderItemDto;
+    public void setOrderItems(List<OrderItemDto> orderItems) {
+        this.orderItems = orderItems;
     }
 }
+
