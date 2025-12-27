@@ -15,4 +15,4 @@ COPY ./.env /app
 ENV SPRING_CONFIG_LOCATION=/app/config/application-prod.properties
 ENV SPRING_PROFILES_ACTIVE=prod
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["sh", "-c", "sleep 20 && java -jar app.jar"]
